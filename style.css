@@ -1,0 +1,132 @@
+html,
+body {
+	font-family: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans",
+		Arial, sans-serif;
+	font-weight: 200;
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+}
+
+body {
+	display: grid;
+	place-content: center;
+}
+
+h1 {
+	font-weight: 700;
+	margin: 10px 0 0 0;
+	padding: 0;
+	line-height: 80%;
+}
+
+blockquote {
+	font-size: smaller;
+}
+
+.app {
+	width: 80vw;
+
+	& input {
+		width: 100%;
+	}
+
+	& #result {
+		display: flex;
+		flex-direction: column;
+
+		& h2 {
+			margin: 10px 0 0 0;
+
+			&:first-letter {
+				text-transform: uppercase;
+			}
+		}
+
+		& blockquote {
+			margin: 0;
+		}
+		& pre {
+			user-select: all;
+			display: none;
+		}
+		
+		& :has(:checked) pre {
+			display: block;
+		}
+		& .colors {
+			display: flex;
+			gap: 6px;
+			margin-top: 2px;
+			margin-bottom: 6px;
+
+			& .color {
+				background: hsla(var(--hue), 70%, var(--lightness), 1);
+				height: calc(4 * 9px);
+				width: calc(4 * 16px);
+				border-radius: 10px 18px 18px 10px;
+			}
+		}
+	}
+}
+
+.hidden {
+	width: 0;
+	overflow: hidden;
+}
+
+/* RANGE of colors */
+#hue {
+	-webkit-appearance: none;
+	width: 100%;
+	height: 20px;
+	border-radius: 10px;
+	background: linear-gradient(
+		to right,
+		hsl(0, 100%, 50%),
+		hsl(60, 100%, 50%),
+		hsl(120, 100%, 50%),
+		hsl(180, 100%, 50%),
+		hsl(240, 100%, 50%),
+		hsl(300, 100%, 50%),
+		hsl(360, 100%, 50%)
+	);
+	background-size: 100% 20px;
+	background-position: 0% 100%;
+	cursor: pointer;
+	margin-bottom: 16px;
+}
+
+#hue::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 24px;
+	height: 32px;
+	border-radius: 4px;
+	background: #ffffffbb;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 1);
+	cursor: pointer;
+}
+
+#hue::-moz-range-thumb {
+	width: 24px;
+	height: 32px;
+	border-radius: 4px;
+	background: #ffffffbb;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 1);
+	cursor: pointer;
+}
+
+.system {
+	cursor: pointer;
+	padding: 0px 8px 8px 16px;
+	border-radius: 4px;
+	background: var(--bg);
+	margin: 0 0 4px 0;
+	transition: background 0.2s;
+}
+.system:has(:checked) {
+	outline: solid 1px hsla(37, 5%, 60%, 0.5);
+}
+.system:hover:not(:has(:checked)) {
+	--bg: hsla(120, 5%, 90%, 0.7);
+}
